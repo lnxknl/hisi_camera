@@ -169,7 +169,7 @@ static const float battery_voltage_level[5] = {
     3.50 + BATTERY_VOLTAGE_CORRECTION, // 0%
 };
 
-void other_gui_job()
+void other_gui_job()// @NOTE 
 {
     static mini_timer timer = 0;
     float val = 0.0;
@@ -180,7 +180,7 @@ void other_gui_job()
     if (mini_timer_is_timeout(&timer)) {
         mini_timer_init(&timer, 10000);
         val = sg_init_param.get_battery_voltage();
-        refresh_battery(val);
+        refresh_battery(val);// @NOTE 
     }
     return;
 }
@@ -1219,7 +1219,7 @@ static void dev_state_gui_close_event_handler(lv_event_t *e)
     }
 }
 
-static void refresh_dev_state()
+static void refresh_dev_state()// @NOTE 
 {
     static mini_timer timer = 0;
     int32_t slen = 0;
@@ -1234,7 +1234,7 @@ static void refresh_dev_state()
             val = sg_init_param.get_cpu_temp();
             sprintf(&dev_state_text[slen], "\ncpu temp: %3.2f", val);
             slen = strlen(dev_state_text);
-            val = sg_init_param.get_battery_voltage();
+            val = sg_init_param.get_battery_voltage();// @NOTE 
             sprintf(&dev_state_text[slen], "\nbattery voltage: %1.3f", val);
 
             lv_label_set_text(dev_state_text_label, dev_state_text);

@@ -25,7 +25,7 @@ typedef struct {
     uint8_t  value;
 } SCCB_REG_CFG;
 
-SCCB_REG_CFG ov5640_init_settings[] = {
+SCCB_REG_CFG ov5640_init_settings[] = {// @NOTE 
     // {0x3103, 0x11}, // SCCB system control
     // {0x3008, 0x82}, // software reset
 
@@ -471,7 +471,7 @@ void OV5640_linear_1080P_YUV_8bit_init(VI_PIPE ViPipe)
     return;
 }
 
-void OV5640_base_init(VI_PIPE ViPipe)
+void OV5640_base_init(VI_PIPE ViPipe)// @NOTE 
 {
     int i;
     OV5640_write_register(ViPipe, 0x3103, 0x11); // SCCB system control
@@ -479,7 +479,7 @@ void OV5640_base_init(VI_PIPE ViPipe)
     delay_ms(5);
 
     for (i = 0; i < sizeof(ov5640_init_settings) / sizeof(ov5640_init_settings[0]); i++) {
-        OV5640_write_register(ViPipe, ov5640_init_settings[i].addr, ov5640_init_settings[i].value);
+        OV5640_write_register(ViPipe, ov5640_init_settings[i].addr, ov5640_init_settings[i].value);// @NOTE 
     }
     return;
 }

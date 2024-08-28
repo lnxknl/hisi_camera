@@ -26,7 +26,7 @@ typedef struct {
     pthread_t thread;
     char running;
     char exit;
-} pthread_manger_t;
+} pthread_manger_t;// @NOTE 
 
 static pthread_manger_t sg_pth_get_audio = {0};
 
@@ -719,7 +719,7 @@ HI_S32 HIMPP_MPP_SYS_Init()
 }
 
 // 这个函数所有初始化失败的地方都没有做处理
-int32_t hisi_media_init(char *path)
+int32_t hisi_media_init(char *path)// @NOTE 
 {    
     int32_t i;
 
@@ -737,7 +737,7 @@ int32_t hisi_media_init(char *path)
     himm(0x11001014, 0xFF000000);
     himm(0x11001040, 0x80000004);
 
-    OV5640_init(0);
+    OV5640_init(0);// @NOTE 
     HI_S32 s32ChnNum = 0;
     VENC_CHN VencChn[ENABLE_VENC_CHN_NUM] = {0};
     for (i = 0; i < ENABLE_VENC_CHN_NUM; i++) {

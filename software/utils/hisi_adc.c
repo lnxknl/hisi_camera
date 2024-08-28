@@ -60,7 +60,7 @@ static void hiadc_stop(void)
     hiadc_write_reg(LSADC_REG_CTRL8, 1);
 }
 
-uint32_t hiadc_get_ch0(void)
+uint32_t hiadc_get_ch0(void)// @NOTE 
 {
     return hiadc_read_reg(LSADC_REG_CTRL11) & LSADC_DATA_IN0_MASK;
 }

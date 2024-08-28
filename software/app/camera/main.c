@@ -163,7 +163,7 @@ float get_cpu_temp(void)
 #endif
 }
 
-float get_battery_voltage(void)
+float get_battery_voltage(void)// @NOTE 
 {
 #ifdef ENABLE_SIMULATE_SYSTEM_CALL
     static float voltage = 4.20;
@@ -464,7 +464,7 @@ void my_mouse_read(lv_indev_drv_t *indev_drv, lv_indev_data_t *data)
 
 // LVGL的接口不是线程安全的，如需多线程操作必须加锁
 // 我采用无锁方案，因此所有调用LVGL接口的操作只放在这个线程中进行
-void *pth_lvgl_func(void *args)
+void *pth_lvgl_func(void *args)// @NOTE 
 {
     uint64_t period_ms;
     struct timespec tp = {0};
@@ -490,7 +490,7 @@ void *pth_lvgl_func(void *args)
     static lv_disp_drv_t disp_drv;
     lv_disp_drv_init(&disp_drv);
     disp_drv.draw_buf = &lvgl_disp_buf;
-    disp_drv.flush_cb = my_disp_flush;
+    disp_drv.flush_cb = my_disp_flush;// @NOTE 
     disp_drv.hor_res = LCD_SCREEN_WIDTH;
     disp_drv.ver_res = LCD_SCREEN_HEIGHT;
     disp_drv.antialiasing = 1;
@@ -550,7 +550,7 @@ void *pth_lvgl_func(void *args)
 
         rec_key_job();
         rec_gui_job();
-        other_gui_job();
+        other_gui_job();// @NOTE 
 
         usleep(25 * 1000);
     }
